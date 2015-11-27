@@ -5,10 +5,12 @@ import javax.swing.*;
 import java.awt.Toolkit;
 
 public class model extends JFrame{
-	private ImagePanel jpnl=new ImagePanel("images/LOGO.png");
-	private JButton ex=new JButton("練習");
+	private ImagePanel jpnl=new ImagePanel("images/logo_main.png");
+//	private JButton ex=new JButton("練習");
 	private JButton one=new JButton("單人");
 	private JButton two=new JButton("連線");
+	JButton ex = new JButton(new ImageIcon(((new ImageIcon("images/button1_style01.png").getImage()
+            .getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)))));
 //	private JLabel imgLabel = new JLabel(new ImageIcon("images/LOGO.png"));
 	private Container cp;
 	int Width = 400, Height=600;
@@ -17,8 +19,8 @@ public class model extends JFrame{
 		frame_modle();
 	}
 	private void frame_modle(){
-		this.setIconImage(new ImageIcon("images/icon.png").getImage());			//設定應用程式圖示
-		this.setResizable(false);
+		this.setIconImage(new ImageIcon("images/logo_icon.png").getImage());			//設定應用程式圖示
+//		this.setResizable(false);
 		this.setTitle("Lomboha");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -39,6 +41,13 @@ public class model extends JFrame{
 		one.setBounds(100,280,200,100);
 		two.setBounds(100,410,200,100);
 		
+		ex.setBorder(BorderFactory.createEmptyBorder());
+    	ex.setContentAreaFilled(false);
+    	one.setBorder(BorderFactory.createEmptyBorder());
+    	one.setContentAreaFilled(false);
+    	two.setBorder(BorderFactory.createEmptyBorder());
+    	two.setContentAreaFilled(false);
+		
 		ex.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				model1 frm1=new model1();
@@ -46,7 +55,16 @@ public class model extends JFrame{
 				setVisible(false);
 			}
 		});
-		
+		ex.addMouseListener(new java.awt.event.MouseAdapter() {
+		    public void mouseEntered(java.awt.event.MouseEvent evt) {			//靠近目標
+		    	ImageIcon icon = new ImageIcon("images/button1_style02.png");
+		        ex.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
+		    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    	ImageIcon icon = new ImageIcon("images/button1_style01.png");	//離開目標
+		        ex.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
+		});
 		one.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				model1 frm1=new model1();
