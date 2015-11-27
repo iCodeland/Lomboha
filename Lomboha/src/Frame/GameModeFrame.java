@@ -8,8 +8,10 @@ public class GameModeFrame extends JFrame{
 	private ImagePanel jpnl_LOGO=new ImagePanel("images/logo_main.png");
 	private JButton jbtn_practice = new JButton(new ImageIcon(((new ImageIcon("images/button1_style01.png").getImage()
             .getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)))));
-	private JButton jbtn_single=new JButton("單人");
-	private JButton jbtn_multi=new JButton("連線");
+	private JButton jbtn_single=new JButton(new ImageIcon(((new ImageIcon("images/button2_style01.png").getImage()
+            .getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)))));
+	private JButton jbtn_multi=new JButton(new ImageIcon(((new ImageIcon("images/button3_style01.png").getImage()
+            .getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)))));
 
 //	private JLabel imgLabel = new JLabel(new ImageIcon("images/LOGO.png"));
 	private Container cp;
@@ -36,7 +38,7 @@ public class GameModeFrame extends JFrame{
 		cp.add(jbtn_single);
 		cp.add(jbtn_multi);
 		
-		jpnl_LOGO.setBounds(80,20,240,100);
+		jpnl_LOGO.setBounds(100,10,240,140);
 		jbtn_practice.setBounds(100,150,200,100);
 		jbtn_single.setBounds(100,280,200,100);
 		jbtn_multi.setBounds(100,410,200,100);
@@ -55,32 +57,61 @@ public class GameModeFrame extends JFrame{
 				setVisible(false);
 			}
 		});
-		jbtn_practice.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mousePressed(java.awt.event.MouseEvent evt){			//點擊目標
+		jbtn_practice.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent evt){			//點擊目標
 				ImageIcon icon = new ImageIcon("images/button1_style03.png");
 		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
 			}
-		    public void mouseEntered(java.awt.event.MouseEvent evt) {			//靠近目標
+		    public void mouseEntered(MouseEvent evt) {			//靠近目標
 		    	ImageIcon icon = new ImageIcon("images/button1_style02.png");
 		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
 		    }
-		    public void mouseExited(java.awt.event.MouseEvent evt) {			//離開目標
+		    public void mouseExited(MouseEvent evt) {			//離開目標
 		    	ImageIcon icon = new ImageIcon("images/button1_style01.png");
 		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
 		    }
 		});
+		
 		jbtn_single.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				model1 frm1=new model1();
 				frm1.setVisible(true);
 				setVisible(false);
 			}
+		});		
+		jbtn_single.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent evt){			//點擊目標
+				ImageIcon icon = new ImageIcon("images/button2_style03.png");
+		        jbtn_single.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+			}
+		    public void mouseEntered(MouseEvent evt) {			//靠近目標
+		    	ImageIcon icon = new ImageIcon("images/button2_style02.png");
+		    	jbtn_single.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
+		    public void mouseExited(MouseEvent evt) {			//離開目標
+		    	ImageIcon icon = new ImageIcon("images/button2_style01.png");
+		    	jbtn_single.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
 		});
 		
 		jbtn_multi.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				
 			}
+		});
+		jbtn_multi.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent evt){			//點擊目標
+				ImageIcon icon = new ImageIcon("images/button3_style03.png");
+				jbtn_multi.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+			}
+		    public void mouseEntered(MouseEvent evt) {			//靠近目標
+		    	ImageIcon icon = new ImageIcon("images/button3_style02.png");
+		    	jbtn_multi.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
+		    public void mouseExited(MouseEvent evt) {			//離開目標
+		    	ImageIcon icon = new ImageIcon("images/button3_style01.png");
+		    	jbtn_multi.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
+		    }
 		});
 		
 		cp.add(jbtn_practice);
