@@ -1,3 +1,4 @@
+package Frame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,6 +10,7 @@ public class model1 extends JFrame{
 	private JButton hard=new JButton("困難");
 	private JButton back=new JButton("Back");
 	private Container cp;
+	int Width = 400, Height=600;
 	
 	public model1(){
 		frame_modle1();
@@ -17,7 +19,8 @@ public class model1 extends JFrame{
 		this.setTitle("英文遊戲字卡/困難度");
 		setResizable(false);
 		cp=this.getContentPane();
-		this.setBounds(650, 250, 400, 600);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setBounds((int)((screenSize.getWidth()-Width)*0.5), (int)((screenSize.getHeight()-Height)*0.5), Width, Height);
 		cp.setLayout(null);
 		
 		jpnl.setBackground(Color.BLUE);
