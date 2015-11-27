@@ -32,7 +32,7 @@ public class model1 extends JFrame{
 		
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
-				model frm=new model();
+				GameModeFrame frm=new GameModeFrame();
 				frm.setVisible(true);
 				setVisible(false);
 			}

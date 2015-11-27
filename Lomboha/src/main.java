@@ -1,8 +1,8 @@
-import Frame.model;
+import Frame.GameModeFrame;
 
 public class main {
 	public static void main(String[] args) {
-		model frm=new model();
+		GameModeFrame frm=new GameModeFrame();
 		frm.setVisible(true);
 	}
 }
