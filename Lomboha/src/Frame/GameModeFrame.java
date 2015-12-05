@@ -2,51 +2,46 @@ package Frame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.Toolkit;
+
+import Component.ImageButton;
+import Component.ImagePanel;
 
 public class GameModeFrame extends JFrame{
-	private ImagePanel jpnl_LOGO=new ImagePanel("images/logo_main.png");
-	private JButton jbtn_practice = new JButton(new ImageIcon(((new ImageIcon("images/button1_style01.png").getImage()
-            .getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)))));
-	private JButton jbtn_single=new JButton("單人");
-	private JButton jbtn_multi=new JButton("連線");
-
+	private ImagePanel jpnl_LOGO = new ImagePanel("images/logo_main.png",200,165);
+	private ImageButton jbtn_practice = new ImageButton("images/button1_style01.png",200,100);
+	private ImageButton jbtn_single = new ImageButton("images/button2_style01.png",200,100);
+	private ImageButton jbtn_multi = new ImageButton("images/button3_style01.png",200,100);
 //	private JLabel imgLabel = new JLabel(new ImageIcon("images/LOGO.png"));
 	private Container cp;
 	int Width = 400, Height=600;
 	
 	public GameModeFrame(){
 		initComp();
-		this.setTitle("Lomboha");												//視窗Title
-		this.setIconImage(new ImageIcon("images/logo_icon.png").getImage());	//設定應用程式圖示
+		setWindow();
 	}
-	private void initComp(){
+	private void setWindow(){
+		this.setTitle("Lomboha");												//視窗Title
+		this.setSize(Width, Height);											//設定視窗大小
+		this.setLocationRelativeTo(this);										//設定視窗初始位置在螢幕中心
+		this.setIconImage(new ImageIcon("images/logo_icon.png").getImage());	//設定應用程式圖示
 //		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setBounds((int)((screenSize.getWidth()-Width)*0.5), (int)((screenSize.getHeight()-Height)*0.5), Width, Height);
-		
+	}
+	private void initComp(){
 		cp=this.getContentPane();
 		cp.setLayout(null);
 		cp.setBackground(new Color(204, 255, 204));
-		jpnl_LOGO.setBackground(new Color(204, 255, 204));
+		jpnl_LOGO.setOpaque(false);
 		
 		cp.add(jpnl_LOGO);
 		cp.add(jbtn_practice);
 		cp.add(jbtn_single);
 		cp.add(jbtn_multi);
 		
-		jpnl_LOGO.setBounds(80,20,240,100);
-		jbtn_practice.setBounds(100,150,200,100);
-		jbtn_single.setBounds(100,280,200,100);
-		jbtn_multi.setBounds(100,410,200,100);
-		
-		jbtn_practice.setBorder(BorderFactory.createEmptyBorder());
-    	jbtn_practice.setContentAreaFilled(false);
-    	jbtn_single.setBorder(BorderFactory.createEmptyBorder());
-    	jbtn_single.setContentAreaFilled(false);
-    	jbtn_multi.setBorder(BorderFactory.createEmptyBorder());
-    	jbtn_multi.setContentAreaFilled(false);
+		jpnl_LOGO.setBounds(100,10,195,160);
+		jbtn_practice.setBounds(100,180,200,100);
+		jbtn_single.setBounds(100,310,200,100);
+		jbtn_multi.setBounds(100,440,200,100);
 		
 		jbtn_practice.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
@@ -55,33 +50,25 @@ public class GameModeFrame extends JFrame{
 				setVisible(false);
 			}
 		});
-		jbtn_practice.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mousePressed(java.awt.event.MouseEvent evt){			//點擊目標
-				ImageIcon icon = new ImageIcon("images/button1_style03.png");
-		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
-			}
-		    public void mouseEntered(java.awt.event.MouseEvent evt) {			//靠近目標
-		    	ImageIcon icon = new ImageIcon("images/button1_style02.png");
-		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
-		    }
-		    public void mouseExited(java.awt.event.MouseEvent evt) {			//離開目標
-		    	ImageIcon icon = new ImageIcon("images/button1_style01.png");
-		        jbtn_practice.setIcon(new ImageIcon(icon.getImage().getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH)));
-		    }
-		});
+		
+		
 		jbtn_single.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				model1 frm1=new model1();
 				frm1.setVisible(true);
 				setVisible(false);
 			}
-		});
+		});		
 		
 		jbtn_multi.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				
 			}
 		});
+		
+		jbtn_practice.addEffectIcon("images/button1_style01.png", "images/button1_style02.png", "images/button1_style03.png");
+		jbtn_single.addEffectIcon("images/button2_style01.png", "images/button2_style02.png", "images/button2_style03.png");
+		jbtn_multi.addEffectIcon("images/button3_style01.png", "images/button3_style02.png", "images/button3_style03.png");
 		
 		cp.add(jbtn_practice);
 		cp.add(jbtn_single);
